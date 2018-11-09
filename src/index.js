@@ -5,10 +5,10 @@ import './index.css';
 class Todo extends React.Component{
 	render(){
 		return(
-			<li key={this.props.name}>
+			<li>
 				{this.props.name} {" --- "}
 				<span className="glyphicon glyphicon-remove" 
-					onClick={()=>this.props.deleteTodo(this.props.name)}>
+					onClick={()=>this.props.deleteTodo(this.props.id)}>
 					Delete
 				</span>
 			</li>
@@ -58,8 +58,8 @@ class TodoList extends React.Component{
 		this.deleteTodo=this.deleteTodo.bind(this);
 	}
 
-	deleteTodo(name){
-		this.props.deleteTodo(name);
+	deleteTodo(id){
+		this.props.deleteTodo(id);
 	}
 
 	render(){
@@ -68,13 +68,16 @@ class TodoList extends React.Component{
 			return(
 				<ul>
 					{todos.map(
-						(todo)=> 
-							<Todo key={todo.name} name={todo.name} deleteTodo={this.deleteTodo} />)
+						(todo)=> <Todo 
+									key={todo.id}  
+									id={todo.id} 
+									name={todo.name} 
+									deleteTodo={this.deleteTodo} />)
 					}
 				</ul>
 			);
 		}else{
-			return(<h1>No tasks created...</h1>);
+			return(<h3>No tasks created...</h3>);
 		}
 	}
 }
@@ -84,24 +87,23 @@ class TodoApp extends React.Component{
 	constructor(props){
 		super(props);
 		this.state={
-			todolist:[
-				{name:"task1",completed:false},
-				{name:"task2",completed:false}
-			],
-			newTodo:""
+			todolist:[],
+			newTodo:"",
+			idGen:0
 		}
 		this.addNewTodo=this.addNewTodo.bind(this);
 		this.deleteTodo=this.deleteTodo.bind(this);
 	}
 
 	addNewTodo(newTodoVal){
-		let val={name:newTodoVal,completed:false}
+		this.setState((prevState)=>({idGen:prevState.idGen+1}))
+		let val={id:this.state.idGen ,name:newTodoVal,completed:false}
 		this.setState({todolist:[...this.state.todolist,val]});
 	}
 
-	deleteTodo(name){
+	deleteTodo(id){
 		this.setState(
-				(prevState)=>({todolist:prevState.todolist.filter(todo => todo.name!==name)}
+				(prevState)=>({todolist:prevState.todolist.filter(todo => todo.id!==id)}
 			))
 	}
 
