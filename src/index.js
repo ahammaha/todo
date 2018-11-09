@@ -2,12 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import './index.css';
 
-const TODOLIST=[
-				{name:"task1",completed:false},
-				{name:"task2",completed:false},
-				{name:"task3",completed:false}
-			]
-
 class Todo extends React.Component{
 	render(){
 		return(
@@ -17,23 +11,33 @@ class Todo extends React.Component{
 }
 
 class TodoList extends React.Component{
-	render(){
-		const todos=this.props.todolist;
-		
-		return(
-			<ul>		
-				{/* {{todos.map((todo)=> <li key={todo.id}>{todo.name} - {todo.completed.toString()}</li>)} */}
-				
-				{todos.map((todo)=> <Todo key={todo.name} name={todo.name} />)}
 
-			</ul>
-		);
+	constructor(props){
+		super(props);
+		this.state={
+			todolist:[
+				{name:"task1",completed:false},
+				{name:"task2",completed:false}
+			]
+		}
+	}
+
+	render(){
+		let todolist=this.state.todolist;
+		if(todolist.length){
+			return(
+				<ul>
+					{todolist.map((todo)=><Todo key={todo.name} name={todo.name} />)}
+				</ul>
+			)
+		}else{
+			return(<h1>No tasks created...</h1>)
+		}
 	}
 }
 
 
-
 ReactDOM.render(
-	<TodoList todolist={TODOLIST} />,
+	<TodoList />,
 	document.getElementById("root")
 );
