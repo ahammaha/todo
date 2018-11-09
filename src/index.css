@@ -1,0 +1,54 @@
+body{
+	background-color: PapayaWhip;
+}
+
+table{
+	margin-top: 40px;
+	margin-left: auto;
+    margin-right: auto;
+}
+
+td{
+	padding:10px;
+}
+
+td button{
+	padding-top: 1px !important;
+}
+
+#todolist{
+	text-align: left;
+	line-height: 2;
+	font-size: 22px;
+}
+
+.align-center{
+	width:25%;
+	margin-top: 50px;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+.red-color{
+	color: red;
+}
+
+.green-color{
+	color:DarkGreen;
+}
+
+.grey-text{
+	color: #636161;
+}
+
+.btn-circle{
+	width: 27px;
+	height: 27px;
+	text-align: center;
+	padding: 6px 0;
+	font-size: 12px;
+	line-height: 1.428571429;
+	border-radius: 20px;
+	border: 2px solid #636161;
+	background-color: PeachPuff;
+}
