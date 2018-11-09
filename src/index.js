@@ -8,18 +8,12 @@ class Todo extends React.Component{
 			<tr>
 				<td>
 					<button className="btn btn-circle" onClick={()=>this.props.changeStatus(this.props.id)} >
-						<i className={this.props.completed?
-								"green-color glyphicon glyphicon-ok":
-								""} >
+						<i className={this.props.completed?"green-color glyphicon glyphicon-ok":""} >
 						</i>
 					</button>
-				</td>
-				<td>
-					<span className={this.props.completed?"grey-text":""}>
-						{this.props.name} 
+					<span className={this.props.completed?"grey-text todoname-min-width":"todoname-min-width"}>
+						{this.props.name}
 					</span>
-				</td>
-				<td>
 					<span className="glyphicon glyphicon-trash red-color" 
 						onClick={()=>this.props.deleteTodo(this.props.id)}>
 					</span>
@@ -52,13 +46,15 @@ class AddTodo extends React.Component{
 
 	render(){
 		return(
-			<fieldset className="align-center">
+			<fieldset className="align-center form-group">
 				<legend>Add Todo Task</legend>
 				<input type="text" 
+					className="form-control"
+					placeholder="Press enter to add Todo"
 					value={this.state.newTodoVal} 
 					onKeyDown={this.addNewTodo} 
 					onChange={this.onInputChange} />
-				<input type="button" value="Add Todo Task" onClick={this.addNewTodo} />
+				<button className="btn btn-primary" onClick={this.addNewTodo}>Add Todo Task</button>
 			</fieldset>
 		);
 	}

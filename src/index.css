@@ -3,17 +3,24 @@ body{
 }
 
 table{
-	margin-top: 40px;
-	margin-left: auto;
-    margin-right: auto;
+	margin:50px auto;
+	min-width: 10%;
+	max-width: 50%
 }
 
 td{
 	padding:10px;
 }
 
+
+tr .todoname-min-width{
+	min-width: 15%;
+	margin-left: 15px;
+	margin-right: 15px;
+}
+
 td button{
-	padding-top: 1px !important;
+	padding-top: 1px;
 }
 
 #todolist{
@@ -30,7 +37,7 @@ td button{
 }
 
 .red-color{
-	color: red;
+	color: #d9534f;
 }
 
 .green-color{
@@ -38,7 +45,7 @@ td button{
 }
 
 .grey-text{
-	color: #636161;
+	color: #868585;
 }
 
 .btn-circle{
@@ -51,4 +58,8 @@ td button{
 	border-radius: 20px;
 	border: 2px solid #636161;
 	background-color: PeachPuff;
+}
+
+.glyphicon-trash{
+	font-size: 1px;
 }
